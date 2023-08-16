@@ -1,21 +1,26 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar/SearchBar";
+import svgIcon from "../../assets/icon.svg";
 import style from "./Navbar.module.css";
 
 export const Navbar = ({ handlePage }) => {
+  const location = useLocation();
+  const showSearchBar = location.pathname === "/home";
   return (
     <div className={style.navContainer}>
       <NavLink className={style.homeButton} to="/home">
-        Icono mundo
+        <img src={svgIcon} alt="icon" width={35} />
       </NavLink>
 
-      <div className={style.searchAndActivities}>
-        <NavLink className={style.navButton} to="/activities">
-          Activities
-        </NavLink>
+      {showSearchBar && (
+        <div className={style.searchAndActivities}>
+          <NavLink className={style.navButton} to="/activities">
+            Activities
+          </NavLink>
 
-        <SearchBar handlePage={handlePage} />
-      </div>
+          <SearchBar handlePage={handlePage} />
+        </div>
+      )}
 
       <NavLink className={style.navButton} to="/">
         Exit

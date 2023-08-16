@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchCountry } from "../../redux/actions";
+import svgIcon from "../../assets/icon-search.svg";
 import style from "./SearchBar.module.css";
 
 export const SearchBar = ({ handlePage }) => {
@@ -24,7 +25,7 @@ export const SearchBar = ({ handlePage }) => {
         onChange={(event) => setName(event.target.value)}
       />
       <button className={style.buttonSearch} type="submit" disabled={!name}>
-        Search
+        <img src={svgIcon} alt="icon" width={30} />
       </button>
     </form>
   );

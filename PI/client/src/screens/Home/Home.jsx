@@ -116,13 +116,14 @@ export const Home = () => {
           ) : (
             <p className={style.mensaje}>Country not Found</p>
           )}
-          <div className={style.pag}>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onChangePage={handlePageChange}
-            />
-          </div>
+        </div>
+
+        <div className={style.pag}>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onChangePage={handlePageChange}
+          />
         </div>
       </div>
     </>
