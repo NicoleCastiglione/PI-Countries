@@ -8,16 +8,16 @@ import {
   clearAllFilters,
 } from "../../redux/actions";
 import { Card } from "../../components/Card/Card";
-import { SearchBar } from "../../components/SearchBar/SearchBar";
-import { Paginado } from "../../components/Paginado/Paginado";
-import { Filter } from "./Filter/Filter";
-import { Order } from "./Order/Order";
+import { Navbar } from "../../components/Navbar/Navbar";
+import { Pagination } from "./components/Pagination/Pagination";
+import { Filter } from "./components/Filter/Filter";
+import { Order } from "./components/Order/Order";
+import { Clear } from "./components/Clear/Clear";
 import style from "./Home.module.css";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
-
   const allActivities = useSelector((state) => state.activities);
 
   //------------------------Paginado------------------------
@@ -62,8 +62,6 @@ export const Home = () => {
       continent: continentFilter,
       activity: activityFilter,
     };
-
-    console.log(filters);
     dispatch(countryFilter(filters));
     setOrderBy(""); // setea el select de ordenamiento, para que cada vez que hago un filtro, vuelva a la option Order by...
   };
@@ -88,22 +86,19 @@ export const Home = () => {
 
   return (
     <>
-      <SearchBar onPageChange={handlePageChange} />
+      <Navbar handlePage={handlePageChange} />
 
       <div className={style.home}>
-        <div className={style.container2}>
+        <div className={style.filters}>
+          <Order orderCountries={handleOrderByName} orderedBy={orderBy} />
           <Filter
             continentFilter={handleFilterContinent}
             activityFilter={handleFilterActivity}
             activities={allActivities}
             applyAction={handleFilter}
           />
-          <Order orderCountries={handleOrderByName} orderedBy={orderBy} />
+          <Clear clear={handleClearFilters} />
         </div>
-
-        <button className={style.reload} onClick={handleClearFilters}>
-          Re-load
-        </button>
 
         <div className={style.container}>
           {currentElements.length !== 0 ? (
@@ -122,7 +117,7 @@ export const Home = () => {
             <p className={style.mensaje}>Country not Found</p>
           )}
           <div className={style.pag}>
-            <Paginado
+            <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
               onChangePage={handlePageChange}

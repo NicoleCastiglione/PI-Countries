@@ -1,7 +1,7 @@
 import React from "react";
-import style from "./Paginado.module.css";
+import style from "./Pagination.module.css";
 
-export const Paginado = ({ currentPage, totalPages, onChangePage }) => {
+export const Pagination = ({ currentPage, totalPages, onChangePage }) => {
   //este componente es para modularizar y poner menos contenido dentro de Home
   //Los siguientes handlers sirven para determinar cual es la pagina que sigue a continuacion, y la pagina previa a la que estamos viendo en el momento, con esto los botones sabran que es lo que hay ante y acontinuacion.
   const handlePreviousPage = () => {
@@ -19,7 +19,7 @@ export const Paginado = ({ currentPage, totalPages, onChangePage }) => {
   return (
     <div className={style.text}>
       <button
-        className={style.select}
+        className="pagination-button"
         onClick={handlePreviousPage}
         disabled={currentPage === 1}
       >
@@ -29,7 +29,7 @@ export const Paginado = ({ currentPage, totalPages, onChangePage }) => {
         Page {currentPage} of {totalPages}
       </span>
       <button
-        className={style.select}
+        className="pagination-button"
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >

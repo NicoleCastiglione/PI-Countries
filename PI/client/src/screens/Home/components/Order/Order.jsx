@@ -1,9 +1,10 @@
 import React from "react";
-import style from "../Home.module.css";
+import style from "../../Home.module.css";
 
 export const Order = ({ orderCountries, orderedBy }) => {
   return (
-    <div className={style.orderContainer}>
+    <div className={style.filterButton}>
+      <h3 className={style.subtitle}>Order</h3>
       <select
         className={style.select}
         onChange={orderCountries}

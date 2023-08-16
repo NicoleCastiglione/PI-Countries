@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../Home.module.css";
+import style from "../../Home.module.css";
 
 export const Filter = ({
   continentFilter,
@@ -8,8 +8,8 @@ export const Filter = ({
   applyAction,
 }) => {
   return (
-    <div className={style.filterContainer}>
-      <div>
+    <>
+      <div className={style.filterButton}>
         <h3 className={style.subtitle}>Continent</h3>
         <select className={style.select} onChange={continentFilter}>
           <option value="All">All Continents</option>
@@ -23,7 +23,7 @@ export const Filter = ({
         </select>
       </div>
 
-      <div>
+      <div className={style.filterButton}>
         <h3 className={style.subtitle}>Activity</h3>
         <select className={style.select} onChange={activityFilter}>
           <option value="All">All Activities</option>
@@ -34,9 +34,11 @@ export const Filter = ({
         </select>
       </div>
 
-      <button className={style.reload} type="submit" onClick={applyAction}>
-        Apply
-      </button>
-    </div>
+      <div className={style.filterButton}>
+        <button type="submit" onClick={applyAction} className="button">
+          Apply
+        </button>
+      </div>
+    </>
   );
 };
