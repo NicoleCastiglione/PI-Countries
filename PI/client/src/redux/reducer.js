@@ -7,6 +7,7 @@ import {
   SEARCH_COUNTRY,
   ORDER_BY_NAME,
   FILTER_COUNTRY,
+  CLEAR_ALL_FILTERS,
 } from "./action-type";
 
 const initialState = {
@@ -41,9 +42,10 @@ const reducer = (state = initialState, { type, payload }) => {
           payload.some((count) => count.id === country.id)
         );
       }
-      return { ...state, countries: PaisesBuscados };
-
-    // -------------------------------------FILTRADOS-----------------------------------
+      return {
+        ...state,
+        countries: PaisesBuscados,
+      };
 
     case FILTER_COUNTRY:
       let countriesFiltrados = [...state.allCountries];
@@ -66,8 +68,6 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         countries: countriesFiltrados,
       };
-
-    // -------------------------------------ORDENAMIENTOS----------------------------------------
 
     case ORDER_BY_NAME:
       const allcountriescopy = [...state.countries];
@@ -101,6 +101,12 @@ const reducer = (state = initialState, { type, payload }) => {
           ),
         };
       break;
+
+    case CLEAR_ALL_FILTERS:
+      return {
+        ...state,
+        countries: state.allCountries,
+      };
 
     default:
       return { ...state };

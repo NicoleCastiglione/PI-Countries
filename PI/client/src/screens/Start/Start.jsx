@@ -1,7 +1,7 @@
-import style from "./Landing.module.css";
+import style from "./Start.module.css";
 import { NavLink } from "react-router-dom";
 
-export const Landing = () => {
+export const Start = () => {
   return (
     <div className={style.landing}>
       <div className={style.text}></div>

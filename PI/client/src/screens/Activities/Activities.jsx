@@ -7,15 +7,10 @@ import {
   getActivities,
   deleteActivities,
 } from "../../redux/actions";
-import validate from "./validate"; //importo la funcion de validaciones para mi form
-import style from "./Form.module.css";
+import validate from "./validate";
+import style from "./Activities.module.css";
 
-const reload = () => {
-  window.location.reload(false);
-};
-//realiza la recarga de la página actual del navegador web. El parámetro false que se pasa a window.location.reload indica que la recarga se realice desde la caché del navegador, es decir, se utiliza la versión almacenada en la memoria del navegador en lugar de solicitar la página nuevamente al servidor.
-
-export const Form = () => {
+export const Activities = () => {
   const dispatch = useDispatch();
   const countriesName = useSelector((state) => state.countries);
   const countriesorden = countriesName.sort((a, b) =>
@@ -83,7 +78,7 @@ export const Form = () => {
     //Si el objeto errorSave tiene algún valor (Object.values() convierte el objeto en un array), se muestra una alerta al usuario indicando que deben cumplirse todas las condiciones requeridas. ¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
     else {
       dispatch(createActivity(input)); //se despacha la action pasandole como argumento "input", que es un objeto con todo lo necesario para crear una nueva actividad.
-      alert("Activity Created!"); //se muestra una alerta al usuario indicando que se ha creado la actividad con exito.
+      alert("Activity Created!");
       setInput({
         name: "",
         difficulty: "",
@@ -91,7 +86,7 @@ export const Form = () => {
         season: "",
         countryId: [],
       }); // borrar los datos ingresados en el formulario.
-      reload(); //recargar la lista de actividades después de crear una nueva actividad.
+      dispatch(getActivities());
     }
   };
 
@@ -107,17 +102,12 @@ export const Form = () => {
   const handleSubmitDelete = (event) => {
     console.log("handleSubmitDelete");
     event.preventDefault();
-    if (delAct.length <= 0) alert("You must select an activity to delete");
-    //¡¡¡YA NO ES NECESARIO PORQUE DESHABILITE EL BOTON!!!!
-    else {
-      dispatch(deleteActivities(delAct));
-      alert("Activity Deleted!");
-      setDelAct("");
-      reload();
-    }
+    dispatch(deleteActivities(delAct));
+    alert("Activity Deleted!");
+    setDelAct("");
+    dispatch(getActivities());
   };
 
-  //------------------------useEffect------------------------
   useEffect(() => {
     dispatch(getCountries());
     dispatch(getActivities());
@@ -153,6 +143,7 @@ export const Form = () => {
               onChange={handleChange}
               name="difficulty"
               defaultValue=""
+              value={input.difficulty}
             >
               <option value="" disabled hidden>
                 Select difficulty
@@ -176,6 +167,7 @@ export const Form = () => {
               onChange={handleChange}
               name="duration"
               defaultValue=""
+              value={input.duration}
             >
               <option value="" disabled hidden>
                 Select duration
@@ -199,6 +191,7 @@ export const Form = () => {
               onChange={handleChange}
               name="season"
               defaultValue=""
+              value={input.season}
             >
               <option value="" disabled hidden>
                 Select season
@@ -220,6 +213,7 @@ export const Form = () => {
               className={style.formInput}
               onChange={handleSelectCountries}
               defaultValue=""
+              value={input.countryId}
             >
               <option value="" disabled hidden>
                 Select country
@@ -235,6 +229,20 @@ export const Form = () => {
             {errors.countryId && (
               <p className={style.formError}>{errors.countryId}</p>
             )}
+
+            <div>
+              <ul className={style.elegidos}>
+                <p>
+                  {input.countryId.map((countrieId_input) =>
+                    countriesName.map((countrie_state) => {
+                      if (countrie_state.id === countrieId_input) {
+                        return countrie_state.name + ", ";
+                      }
+                    })
+                  )}
+                </p>
+              </ul>
+            </div>
 
             {/* Se mapea la propiedad countryId del objeto input, donde se guardaron los id de los paises seleccionados anteriormente. Luego se vuelve a hacer otro mapeo, esta vez de la constante countriesName, que contiene el valor del estado countries que es un array con todos los paises. En este segundo mapeo se compara si el Id de alguno de los paises dentro del estado countries coincide con el id de los paises seleccionados, que se renderice en una etiqueta <p> el nombre de ese pais + , */}
           </div>
@@ -300,12 +308,6 @@ export const Form = () => {
               </button>
             </div>
           </form>
-          {/* -----------------------Reload sector----------------------- */}
-        </div>
-        <div>
-          <button className={style.reloadd} onClick={reload}>
-            Reset Form
-          </button>
         </div>
       </div>
     </div>

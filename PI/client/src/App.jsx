@@ -1,25 +1,24 @@
 import "./App.css";
-import { Home } from "./components/Home/Home";
-import { Landing } from "./components/Landing/Landing";
+import { Home } from "./screens/Home/Home";
+import { Start } from "./screens/Start/Start";
 import { Route, Routes, useLocation } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
-import Detail from "./components/Detail/Detail";
-import { Form } from "./components/Form/Form";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Detail } from "./screens/CountryDetails/Detail";
+import { Activities } from "./screens/Activities/Activities";
 
 const App = () => {
   const location = useLocation();
-
+  const pathDoesntExists =
+    location.pathname !== "/" && location.pathname !== "/home";
   return (
     <div className="App">
-      <div className="shadow">
-        {location.pathname !== "/" && location.pathname !== "/home" ? (
-          <Nav />
-        ) : null}
+      <div>
+        {pathDoesntExists && <Navbar />}
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Start />} />
           <Route path="/home" element={<Home />} />
           <Route path="/detail/:id" element={<Detail />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/activities" element={<Activities />} />
         </Routes>
       </div>
     </div>

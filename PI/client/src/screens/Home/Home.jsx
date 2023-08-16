@@ -1,23 +1,23 @@
-import Card from "../Card/Card";
-import style from "./Home.module.css";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   getCountries,
   getActivities,
   countryFilter,
   ordeByName,
+  clearAllFilters,
 } from "../../redux/actions";
-import SearchBar from "../SearchBar/SearchBar";
-import Paginado from "../Paginado/Paginado";
-
-const reload = () => {
-  window.location.reload(false);
-};
+import { Card } from "../../components/Card/Card";
+import { SearchBar } from "../../components/SearchBar/SearchBar";
+import { Paginado } from "../../components/Paginado/Paginado";
+import { Filter } from "./Filter/Filter";
+import { Order } from "./Order/Order";
+import style from "./Home.module.css";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
+
   const allActivities = useSelector((state) => state.activities);
 
   //------------------------Paginado------------------------
@@ -34,9 +34,6 @@ export const Home = () => {
   //------------------------useEffect------------------------
   useEffect(() => {
     dispatch(getCountries());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(getActivities());
   }, [dispatch]);
 
@@ -65,6 +62,8 @@ export const Home = () => {
       continent: continentFilter,
       activity: activityFilter,
     };
+
+    console.log(filters);
     dispatch(countryFilter(filters));
     setOrderBy(""); // setea el select de ordenamiento, para que cada vez que hago un filtro, vuelva a la option Order by...
   };
@@ -83,83 +82,28 @@ export const Home = () => {
     setCurrentPage(pageNumber);
   }; //handler que maneja la pagina en la cual estamos.
 
+  const handleClearFilters = () => {
+    dispatch(clearAllFilters());
+  };
+
   return (
-    <div>
-      <div>
-        <SearchBar
-          handleFilter={handleFilter}
-          onPageChange={handlePageChange}
-        />
-      </div>
+    <>
+      <SearchBar onPageChange={handlePageChange} />
 
       <div className={style.home}>
-        <div className={style.costado}>
-          {/* ------------------Filtros-------------------- */}
-          <div className={style.filterContainer}>
-            <h1 className={style.title}>Filters</h1>
-            <div>
-              <h3 className={style.subtitle}>By Continent</h3>
-              <select className={style.select} onChange={handleFilterContinent}>
-                <option value="All">All Continents</option>
-                <option value="Africa">Africa</option>
-                <option value="Antarctica">Antartica</option>
-                <option value="Asia">Asia</option>
-                <option value="Europe">Europe</option>
-                <option value="North America">North America</option>
-                <option value="Oceania">Oceania</option>
-                <option value="South America">South America</option>
-              </select>
-            </div>
-            <div>
-              <h3 className={style.subtitle}>By Activity</h3>
-              <select className={style.select} onChange={handleFilterActivity}>
-                <option value="All">All Activities</option>
-                {allActivities &&
-                  allActivities.map((activity) => {
-                    return (
-                      <option value={activity.name}>{activity.name}</option>
-                    );
-                  })}
-              </select>
-            </div>
-            <button
-              className={style.reload}
-              type="submit"
-              onClick={handleFilter}
-            >
-              Apply
-            </button>
-          </div>
-
-          {/* ---------Ordenamiento por nombre y poblacion--------- */}
-
-          <div className={style.orderContainer}>
-            <h1 className={style.title}>Order By</h1>
-            <h3 className={style.subtitle}>Name/Population</h3>
-            <select
-              className={style.select}
-              onChange={handleOrderByName}
-              value={orderBy}
-            >
-              <option value="" disabled selected>
-                Order by...
-              </option>
-              <option value="ascName">Names A - Z</option>
-              <option value="descName">Names Z - A</option>
-              <option value="ascPopulation">Population Low-High</option>
-              <option value="descPopulation">Population High-Low</option>
-            </select>
-          </div>
-
-          <button
-            className={style.reload}
-            onClick={() => {
-              reload();
-            }}
-          >
-            Re-load
-          </button>
+        <div className={style.container2}>
+          <Filter
+            continentFilter={handleFilterContinent}
+            activityFilter={handleFilterActivity}
+            activities={allActivities}
+            applyAction={handleFilter}
+          />
+          <Order orderCountries={handleOrderByName} orderedBy={orderBy} />
         </div>
+
+        <button className={style.reload} onClick={handleClearFilters}>
+          Re-load
+        </button>
 
         <div className={style.container}>
           {currentElements.length !== 0 ? (
@@ -177,7 +121,6 @@ export const Home = () => {
           ) : (
             <p className={style.mensaje}>Country not Found</p>
           )}
-          <div className={style.espacio}> </div>
           <div className={style.pag}>
             <Paginado
               currentPage={currentPage}
@@ -187,6 +130,6 @@ export const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

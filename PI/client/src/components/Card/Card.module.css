@@ -1,4 +1,4 @@
-.divCard {
+.Card {
     border-radius: 15px;
     height: 33vh;
     width: 14vw;
@@ -7,24 +7,15 @@
     background-color: rgba(0, 0, 0, 0.452);
     color: #f5efe8;
     transition: 0.5s;
-    font-family: "Consolas";
+    font-family: "Helvetica";
 }
 
-.divCard:hover {
+.Card:hover {
     background-color: rgba(255, 255, 255, 0.452);
-    color: black
+    color: black;
 }
 
-.divTop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Centra los elementos verticalmente */
-    height: 10vh;
-    padding: 0;
-}
-
-.divTitles {
+.titles {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,12 +27,22 @@
     padding: 2%;
 }
 
-.divImg {
+.title {
+    margin-top: 0.8vh;
+    margin-bottom: 0.5vh;
+    font-size: 2.3vh;
+}
+
+.subtitle {
+    margin-top: 0.5vh;
+    font-size: 1.5vh;
+}
+
+.img {
     display: flex;
     justify-content: left;
     position: relative;
     top: 4vh;
-
 }
 
 .imgCard {
@@ -53,15 +54,4 @@
     height: 15vh;
     width: 10vw;
     align-self: center;
-}
-
-.title {
-    margin-top: 0.8vh;
-    margin-bottom: 0.3vh;
-    font-size: 2.5vh;
-}
-
-.subtitle {
-    margin-top: 0.3vh;
-    font-size: 1.7vh;
 }

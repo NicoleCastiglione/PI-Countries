@@ -1,6 +1,6 @@
 .containerPage {
     display: flex;
-    font-family: "Consolas";
+    font-family: "Helvetica";
     flex-direction: row;
     justify-content: center;
 }

@@ -1,5 +1,5 @@
 .select {
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
@@ -7,7 +7,6 @@
     margin-right: 0.3vw;
     font-weight: bold;
     font-size: 2.2vh;
-
 }
 
 .select:hover {
@@ -15,7 +14,7 @@
 }
 
 .countries {
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;

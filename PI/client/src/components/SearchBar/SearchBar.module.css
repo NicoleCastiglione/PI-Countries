@@ -18,7 +18,7 @@
 }
 
 .select {
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
@@ -36,7 +36,7 @@
     width: 20vw;
     height: 5vh;
     margin-left: 19vw;
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-radius: 10px 0px 0px 10px;
     background-color: white;
     transition: 0.3s;
@@ -53,7 +53,7 @@
     width: 7vw;
     height: 5vh;
     ;
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-radius: 0px 10px 10px 0px;
     background-color: rgb(53, 52, 52);
     transition: 0.3s;
@@ -89,7 +89,7 @@ a:hover {
 }
 
 .countries {
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;
@@ -105,7 +105,7 @@ a:hover {
     width: 10vw;
     height: 5vh;
     ;
-    font-family: "Consolas";
+    font-family: "Helvetica";
     border-radius: 10px;
     background-color: rgb(53, 52, 52);
     transition: 0.3s;

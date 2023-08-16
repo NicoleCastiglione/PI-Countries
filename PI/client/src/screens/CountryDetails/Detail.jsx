@@ -5,7 +5,7 @@ import { getCountryDetail } from "../../redux/actions";
 import { useEffect } from "react";
 import styles from "./Detail.module.css";
 
-const Detail = () => {
+export const Detail = () => {
   const { id } = useParams();
   const countries = useSelector((state) => state.countryDetail);
   const dispatch = useDispatch();
@@ -65,5 +65,3 @@ const Detail = () => {
     </div>
   );
 };
-
-export default Detail;

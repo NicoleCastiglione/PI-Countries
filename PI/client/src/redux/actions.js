@@ -7,6 +7,7 @@ import {
   SEARCH_COUNTRY,
   FILTER_COUNTRY,
   ORDER_BY_NAME,
+  CLEAR_ALL_FILTERS,
 } from "./action-type";
 
 import axios from "axios";
@@ -83,5 +84,12 @@ export const ordeByName = (payload) => {
   return {
     type: ORDER_BY_NAME,
     payload,
+  };
+};
+
+// ------ borrar los filtros -----
+export const clearAllFilters = () => {
+  return {
+    type: CLEAR_ALL_FILTERS,
   };
 };
