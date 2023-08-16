@@ -8,7 +8,7 @@ export const Navbar = ({ handlePage }) => {
   const showSearchBar = location.pathname === "/home";
   return (
     <div className={style.navContainer}>
-      <NavLink className={style.homeButton} to="/home">
+      <NavLink to="/home">
         <img src={svgIcon} alt="icon" width={35} />
       </NavLink>
 

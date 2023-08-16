@@ -16,11 +16,11 @@ export const Detail = () => {
 
   return (
     <div>
-      <div className={styles.containerPage}>
+      <div className={styles.container}>
         <div className={styles.containerImage}>
-          <h1 className={styles.pais}>{countries?.name}</h1>
+          <h1 className={styles.countryName}>{countries?.name}</h1>
           <img
-            className={styles.image}
+            className={styles.flag}
             src={countries?.imageFlag}
             alt={countries?.name}
           />
@@ -39,13 +39,13 @@ export const Detail = () => {
           <div className={styles.containerDetails}>
             <h1 className={styles.title}>Tourist Activities</h1>
 
-            <div className={styles.actividades}>
+            <div className={styles.activity}>
               {countries?.Activities?.length > 0 ? (
                 countries?.Activities?.map((activity) => (
                   <div className={styles.actcontainer}>
-                    <h3 className={styles.textsub}>{activity.name}</h3>
+                    <h3 className={styles.titleAct}>{activity.name}</h3>
                     <h5 className={styles.text}>
-                      Dificulty: {activity.difficulty}
+                      Difficulty: {activity.difficulty}
                     </h5>
                     <h5 className={styles.text}>
                       Duration: {activity.duration} hs
@@ -54,7 +54,7 @@ export const Detail = () => {
                   </div>
                 ))
               ) : (
-                <p className={styles.divLoading}>
+                <p className={styles.actEmpty}>
                   No Tourist Activities added so far
                 </p>
               )}

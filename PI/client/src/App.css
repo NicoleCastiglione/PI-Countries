@@ -11,30 +11,41 @@ body {
 }
 
 .button {
-  border-radius: 10px;
-  background-color: rgb(23, 131, 77);
-  color: #fff;
+  background-color: black;
+  border-radius: 4em;
+  font-size: 16px;
+  color: rgb(219, 209, 209);
+  padding: 0.8em 1.8em;
   cursor: pointer;
-  transition: .2s;
-  padding: 6px 28px;
-  border: none;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
 }
 
 .button:hover {
-  background-color: rgb(12, 73, 43);
+  transition-duration: 0.1s;
+  background-color: #3a3a3a;
 }
 
 .pagination-button {
-  border-radius: 10px;
-  background-color: rgb(23, 131, 77);
-  color: #fff;
+  background-color: black;
+  border-radius: 4em;
+  font-size: 10px;
+  color: rgb(219, 209, 209);
+  padding: 0.8em 1.8em;
   cursor: pointer;
-  transition: .2s;
-  padding: 6px 10px;
-  border: none;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
 }
 
 .pagination-button:hover {
-  background-color: rgb(12, 73, 43);
+  transition-duration: 0.1s;
+  background-color: #3a3a3a;
 
 }

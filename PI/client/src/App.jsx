@@ -10,6 +10,7 @@ const App = () => {
   const location = useLocation();
   const pathDoesntExists =
     location.pathname !== "/" && location.pathname !== "/home";
+
   return (
     <div className="App">
       <div>

@@ -8,13 +8,10 @@ const deleteActivity = async (name) => {
     if (!activity) {
       return false;
     }
-
     // desvincula la actividad de todos los países relacionados
     await activity.setCountries([]);
-
     // elimina la actividad
     await activity.destroy();
-
     return true;
   } catch (error) {
     console.log("Error al eliminar la actividad", error);

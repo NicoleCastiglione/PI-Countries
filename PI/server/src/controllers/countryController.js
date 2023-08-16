@@ -39,7 +39,6 @@ const getCountryByName = async (req, res) => {
 };
 
 const getCountryById = async (req, res) => {
-  console.log("Ejecutando la fn getcountrybyid");
   const { idPais } = req.params; //guardo la info que obtengo por params (idPais)
   const allCountry = await getDBinfo(); //obtengo la info que tengo ahora en mi DB
 

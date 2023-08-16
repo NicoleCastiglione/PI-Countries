@@ -47,27 +47,19 @@ export const deleteActivities = (payload) => {
       let info = await axios.delete(`/activities?name=${payload}`);
       return dispatch({ type: DELETE_ACTIVITIES, payload: info.data });
     } catch (error) {
-      console.log("Error al borrar la actividad", error);
+      throw new Error("Error al borrar la actividad", error);
     }
   };
 };
 
 export const searchCountry = (payload) => {
-  console.log("payload", payload);
-
   return async (dispatch) => {
     try {
-      console.log("aca");
       let info = await axios.get(`/countries/name?name=${payload}`);
-      if (info.data) {
-        console.log("info.data", info.data);
-
+      if (info.data)
         return dispatch({ type: SEARCH_COUNTRY, payload: info.data });
-      } else {
-        console.log("No se encontró data");
-      }
     } catch (error) {
-      console.log("Error al buscar pais", error);
+      throw new Error("Error al buscar pais", error);
     }
   };
 };

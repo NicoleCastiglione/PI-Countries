@@ -14,10 +14,7 @@ const getDBinfo = async () => {
       },
     }); //busco todos los paises e incluyo la relacion que tiene cada uno con el modelo Activity, de esta forma cada pais va a tener una propiedad "Activities" con los atributos de las actividades con las que esta relacionado.
   } catch (error) {
-    console.log(
-      "Error al obtener todos los Paises de la DB incluyendo sus Actividades",
-      error
-    );
+    console.log("Error al obtener todos los Paises de la DB", error);
   }
 };
 

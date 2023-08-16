@@ -1,120 +1,97 @@
-.formContainer {
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Helvetica";
+    height: 90vh;
+}
+
+.createContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 0.4vh solid rgb(194, 19, 19);
-    width: 35vw;
-    padding: 4vh;
+    width: 40vw;
+    height: 38vw;
+    padding: 6vh;
     border-radius: 15px;
-    font-family: "Helvetica";
     background-color: rgba(0, 0, 0, 0.253);
-    margin-left: 5vw;
-    margin-right: 4vw;
+    margin: auto;
 }
 
-.formContainerdel {
+.deleteContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 0.4vh solid rgb(94, 6, 177);
     width: 35vw;
-    padding: 4vh;
+    padding: 6vh;
     border-radius: 15px;
-    font-family: "Helvetica";
     background-color: rgba(0, 0, 0, 0.253);
-    margin-left: 4vw;
-    margin-right: 5vw;
-    height: 50vh;
+    margin: auto;
 }
 
-.titulo {
-    margin-top: 1.3vh;
+.title {
+    margin-top: 1vh;
     margin-bottom: 2vh;
     text-transform: uppercase;
-    text-decoration: underline;
     font-size: 6vh;
-    font-family: "Helvetica";
     font-weight: bold;
-    color: white;
+    color: whitesmoke;
 }
 
 .formField {
     align-items: center;
     text-align: center;
-    height: 11.5vh;
-    font-family: "Helvetica";
+    height: 10vh;
 }
 
 .formInput {
-    width: 15vw;
-    height: 6.3vh;
-    position: relative;
-    padding: 0px;
-    border: 0px;
-    font-family: "Helvetica";
-    border-radius: 0px 10px 10px 0px;
-    background-color: rgb(53, 52, 52);
-    transition: 0.3s;
-    border: 0.1vh solid black;
-    font-size: 3vh;
-    text-align: center;
-    color: rgb(114, 114, 114);
-}
-
-.formInputdel {
-    width: 15vw;
-    height: 6.3vh;
-    position: relative;
-    padding: 0px;
-    border: 0px;
-    font-family: "Helvetica";
-    border-radius: 10px;
-    background-color: rgb(53, 52, 52);
-    transition: 0.3s;
-    border: 0.1vh solid black;
-    font-size: 3vh;
-    text-align: center;
-    color: rgb(114, 114, 114);
-}
-
-.formInputt {
     width: 15vw;
     height: 6vh;
     position: relative;
     padding: 0px;
     border: 0px;
-    font-family: "Helvetica";
     border-radius: 0px 10px 10px 0px;
-    background-color: rgb(53, 52, 52);
+    background-color: whitesmoke;
     transition: 0.3s;
-    border: 0.1vh solid black;
     font-size: 3vh;
     text-align: center;
 }
 
+.formSelect {
+    width: 15vw;
+    height: 6.3vh;
+    border-radius: 0px 10px 10px 0px;
+    background-color: whitesmoke;
+    transition: 0.3s;
+    font-size: 3vh;
+    text-align: center;
+    color: black;
+}
+
+.formDeleteSelect {
+    width: 15vw;
+    height: 6.3vh;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    transition: 0.3s;
+    font-size: 3vh;
+    text-align: center;
+    color: black;
+}
+
 .label {
-    padding: 1.2vh;
+    padding: 1.5vh;
     width: 11vw;
-    font-family: "Helvetica";
     border-radius: 10px 0px 0px 10px;
     background-color: rgba(0, 0, 0, 0.384);
     text-align: center;
     position: relative;
-    border: 0.1vh solid black;
     display: inline-block;
     font-size: 3vh;
-}
-
-.formInput:hover {
-    background-color: white;
-    color: black;
-}
-
-.formInputt:hover {
-    background-color: white;
-    color: black;
+    color: whitesmoke
 }
 
 .formError {
@@ -123,81 +100,36 @@
     margin-top: 0px;
 }
 
-.elegidos {
-    font-family: "Helvetica";
+.countriesSelect {
+    display: flex;
     justify-content: center;
     text-align: center;
-    padding: 0px;
-    width: 30vw;
     font-size: 3vh;
     color: white;
 }
 
-.inputContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.contenedor {
-    display: flex;
-    background-image: url("../img/paises.jpg");
-    border: 0.4vh solid rgb(194, 19, 19);
-    flex-direction: row;
-    justify-content: center;
-    font-family: "Helvetica";
-    height: 90vh;
-}
-
-.reload {
-    width: 10vw;
-    height: 5vh;
-    margin-top: 8vh;
-    margin-bottom: 0px;
-    font-family: "Helvetica";
-    border-radius: 10px;
-    background-color: white;
-    cursor: pointer;
-    border-color: #ffffff;
-    color: black;
-    border: 0.4vh;
-    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
-    -webkit-transition: all 150ms ease-in-out;
-    transition: 0.5s;
-    font-size: 3vh;
-    font-weight: bold;
-}
-
-.reload:hover {
+.button {
     background-color: black;
-    color: white;
+    border-radius: 4em;
+    font-size: 16px;
+    color: rgb(219, 209, 209);
+    padding: 0.8em 1.8em;
+    margin-top: 100px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
 }
 
-.reload:disabled {
+.button:hover {
+    transition-duration: 0.1s;
+    background-color: #3a3a3a;
+}
+
+.button:disabled {
     background-color: white;
     color: rgb(100, 98, 98);
     cursor: default;
-}
-
-.reloadd {
-    width: 15vw;
-    height: 8vh;
-    margin-top: 22vh;
-    margin-bottom: 0px;
-    font-family: "Helvetica";
-    border-radius: 10px;
-    background-color: rgb(53, 52, 52);
-    cursor: pointer;
-    border-color: #ffffff;
-    color: white;
-    box-shadow: 0 0 5px 5px rgb(39, 39, 39);
-    -webkit-transition: all 150ms ease-in-out;
-    transition: 0.5s;
-    font-size: 4vh;
-    font-weight: bold;
-}
-
-.reloadd:hover {
-    background-color: black;
-    color: white;
 }

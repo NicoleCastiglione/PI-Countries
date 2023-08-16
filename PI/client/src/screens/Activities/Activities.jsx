@@ -63,7 +63,6 @@ export const Activities = () => {
   //se ejecuta cuando se selecciona el pais o los paises donde se realiza la nueva actividad. Concatena el valor proporcionado en el select con los valores previos en la propiedad countryId, llama a la función setErrors para realizar validaciones en el nuevo estado input.
 
   const handleSubmit = (event) => {
-    console.log("handleSubmit");
     event.preventDefault(); //se evita que la página se recargue al enviar el formulario.
     const errorSave = validate(input); // se asigna el resultado de la funcion validate, pasandole input como parametro.
     const existName = theActivities.find(
@@ -91,20 +90,18 @@ export const Activities = () => {
   };
 
   //------------------------Delete Activity------------------------
-  const [delAct, setDelAct] = useState("");
+  const [deleteAct, setDeleteAct] = useState("");
 
   const handleSelectDelete = (event) => {
-    console.log("handleSelectDelete");
-    setDelAct(event.target.value);
+    setDeleteAct(event.target.value);
   };
   //se ejecuta cuando se selecciona una actividad para eliminar en el campo de selección correspondiente. Actualiza el estado delAct con el nombre de la actividad seleccionada.
 
   const handleSubmitDelete = (event) => {
-    console.log("handleSubmitDelete");
     event.preventDefault();
-    dispatch(deleteActivities(delAct));
+    dispatch(deleteActivities(deleteAct));
     alert("Activity Deleted!");
-    setDelAct("");
+    setDeleteAct("");
     dispatch(getActivities());
   };
 
@@ -115,16 +112,16 @@ export const Activities = () => {
   }, [dispatch]);
 
   return (
-    <div className={style.contenedor}>
-      {/* -----------------------Create activity sector----------------------- */}
-      <div className={style.formContainer}>
-        <p className={style.titulo}>Create your Activity</p>
-        <form onSubmit={(e) => handleSubmit(e)}>
+    <div className={style.container}>
+      {/* -----------------------Create activity ----------------------- */}
+      <div className={style.createContainer}>
+        <p className={style.title}>Create your Activity</p>
+        <form onSubmit={handleSubmit}>
           <div className={style.formField}>
-            <div className={style.unidos}>
+            <div>
               <label className={style.label}>Name: </label>
               <input
-                className={style.formInputt}
+                className={style.formInput}
                 onChange={handleChange}
                 type="text"
                 value={input.name}
@@ -139,7 +136,7 @@ export const Activities = () => {
           <div className={style.formField}>
             <label className={style.label}>Difficulty: </label>
             <select
-              className={style.formInput}
+              className={style.formSelect}
               onChange={handleChange}
               name="difficulty"
               defaultValue=""
@@ -163,7 +160,7 @@ export const Activities = () => {
           <div className={style.formField}>
             <label className={style.label}>Duration: </label>
             <select
-              className={style.formInput}
+              className={style.formSelect}
               onChange={handleChange}
               name="duration"
               defaultValue=""
@@ -187,7 +184,7 @@ export const Activities = () => {
           <div className={style.formField}>
             <label className={style.label}>Season: </label>
             <select
-              className={style.formInput}
+              className={style.formSelect}
               onChange={handleChange}
               name="season"
               defaultValue=""
@@ -210,7 +207,7 @@ export const Activities = () => {
           <div className={style.formField}>
             <label className={style.label}>Country: </label>
             <select
-              className={style.formInput}
+              className={style.formSelect}
               onChange={handleSelectCountries}
               defaultValue=""
               value={input.countryId}
@@ -231,7 +228,7 @@ export const Activities = () => {
             )}
 
             <div>
-              <ul className={style.elegidos}>
+              <ul className={style.countriesSelect}>
                 <p>
                   {input.countryId.map((countrieId_input) =>
                     countriesName.map((countrie_state) => {
@@ -247,40 +244,39 @@ export const Activities = () => {
             {/* Se mapea la propiedad countryId del objeto input, donde se guardaron los id de los paises seleccionados anteriormente. Luego se vuelve a hacer otro mapeo, esta vez de la constante countriesName, que contiene el valor del estado countries que es un array con todos los paises. En este segundo mapeo se compara si el Id de alguno de los paises dentro del estado countries coincide con el id de los paises seleccionados, que se renderice en una etiqueta <p> el nombre de ese pais + , */}
           </div>
 
-          <div>
-            <button
-              className={style.reload}
-              type="submit"
-              disabled={
-                input.name === "" ||
-                input.difficulty === "" ||
-                input.duration === "" ||
-                input.season === "" ||
-                input.countryId.length < 0 ||
-                errors.name ||
-                errors.difficulty ||
-                errors.duration ||
-                errors.season ||
-                errors.countryId
-              }
-            >
-              Create
-            </button>
-          </div>
+          <div></div>
+          <button
+            className={style.button}
+            type="submit"
+            disabled={
+              input.name === "" ||
+              input.difficulty === "" ||
+              input.duration === "" ||
+              input.season === "" ||
+              input.countryId.length < 0 ||
+              errors.name ||
+              errors.difficulty ||
+              errors.duration ||
+              errors.season ||
+              errors.countryId
+            }
+          >
+            Create
+          </button>
         </form>
       </div>
 
-      {/* -----------------------Delete activity sector----------------------- */}
-      <div className={style.formContainerdel}>
+      {/* -----------------------Delete activity ----------------------- */}
+      <div className={style.deleteContainer}>
         <div>
-          <p className={style.titulo}>Delete Activity</p>
+          <p className={style.title}>Delete Activity</p>
           <form onSubmit={handleSubmitDelete}>
             <div className={style.formField}>
               <div>
                 <select
-                  className={style.formInputdel}
+                  className={style.formDeleteSelect}
                   onChange={handleSelectDelete}
-                  value={delAct}
+                  value={deleteAct}
                 >
                   <option value="" disabled hidden>
                     Select activity
@@ -296,14 +292,18 @@ export const Activities = () => {
               </div>
             </div>
 
-            <p className={style.elegidos}>
-              {delAct
-                ? `Activity to delete: ${delAct}`
+            <p className={style.countriesSelect}>
+              {deleteAct
+                ? `Activity to delete: ${deleteAct}`
                 : "Select activity to delete"}
             </p>
 
             <div>
-              <button className={style.reload} type="submit" disabled={!delAct}>
+              <button
+                className={style.button}
+                type="submit"
+                disabled={!deleteAct}
+              >
                 Delete Activity
               </button>
             </div>

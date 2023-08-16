@@ -1,8 +1,9 @@
-.containerPage {
+.container {
     display: flex;
-    font-family: "Helvetica";
     flex-direction: row;
-    justify-content: center;
+    margin: auto;
+    font-family: "Helvetica";
+
 }
 
 .containerImage {
@@ -10,27 +11,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 1vw;
-    margin-left: 1vw;
+    margin: 1vh;
     width: 53vw;
     height: 88.5vh;
-    border: 0.4vh solid black;
     border-radius: 15px;
-    margin-top: 0.5vh;
-    background-color: rgba(0, 0, 0, 0.253);
+    background-color: rgba(0, 0, 0, 0.555);
 }
 
-.pais {
+.countryName {
     margin-top: 0px;
-    text-transform: uppercase;
     font-size: 7.5vh;
-    color: black;
-    font-weight: bolder;
+    color: whitesmoke;
 }
 
-.image {
+.flag {
     width: 60%;
-    background-color: #0000007b;
     border-radius: 50px;
     margin-left: 1vh;
 }
@@ -43,13 +38,10 @@
     width: 45vw;
     height: 38.9vh;
     background-color: rgba(0, 0, 0, 0.555);
-    border: 2px solid black;
     border-radius: 15px;
-    margin-bottom: 1vh;
-    padding-bottom: 4.5vh;
-    margin-top: 0.5vh;
-    color: white;
-    margin-right: 0.5vw;
+    margin: 1vh;
+    padding-bottom: 4.8vh;
+    color: whitesmoke;
 }
 
 .actcontainer {
@@ -58,18 +50,16 @@
     justify-content: center;
     width: 12vw;
     height: 17vh;
-    background-color: rgba(0, 0, 0, 0.452);
-    border: 0.4vh solid black;
+    border: 0.4vh solid #191919;
     padding: 0.4vh;
     border-radius: 15px;
     align-items: center;
-    color: white;
+    color: whitesmoke;
 }
 
 .title {
     text-transform: uppercase;
-    text-decoration: underline;
-    font-size: 6vh;
+    font-size: 5vh;
     margin-top: 0.5vh;
     margin-bottom: 1vh;
 }
@@ -77,16 +67,16 @@
 .text {
     margin-top: 0.5vh;
     margin-bottom: 0.5vh;
-    font-size: 2.5vh;
+    font-size: 2.3vh;
 }
 
-.textsub {
+.titleAct {
     text-transform: uppercase;
     margin-top: 0.5vh;
     margin-bottom: 0.3vh;
 }
 
-.actividades {
+.activity {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -97,6 +87,6 @@
     margin-top: 1vh;
 }
 
-.divLoading {
+.actEmpty {
     font-size: 2vh;
 }

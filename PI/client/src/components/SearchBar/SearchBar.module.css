@@ -2,21 +2,6 @@
     display: flex;
 }
 
-.select {
-    font-family: "Helvetica";
-    border-color: rgba(240, 248, 255, 0);
-    background-color: rgba(63, 62, 62, 0);
-    transition: 0.3s;
-    margin-left: 0.3vw;
-    margin-right: 0.3vw;
-    font-weight: bold;
-    font-size: 2.2vh;
-}
-
-.select:hover {
-    color: white;
-}
-
 .search {
     width: 20vw;
     height: 5vh;
@@ -39,12 +24,6 @@
     cursor: pointer;
 }
 
-.buttonSearch:disabled {
-    color: #ccc;
-    background-color: white;
-}
-
-
 a:link,
 a:visited,
 a:active {
@@ -58,7 +37,6 @@ a:hover {
 }
 
 .countries {
-    font-family: "Helvetica";
     border-color: rgba(240, 248, 255, 0);
     background-color: rgba(63, 62, 62, 0);
     transition: 0.3s;

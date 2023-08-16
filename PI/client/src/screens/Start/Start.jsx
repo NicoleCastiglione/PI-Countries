@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 
 export const Start = () => {
   return (
-    <div className={style.landing}>
-      <div className={style.textBig}>
-        <h1>Countries App Proyect</h1>
+    <>
+      <div className={style.text}>
+        <h1>Countries App</h1>
       </div>
 
       <NavLink to="/home">
         <button className="button">Start</button>
       </NavLink>
-    </div>
+    </>
   );
 };
